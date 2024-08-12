@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "DM Sans", sans-serif;
+  background-color: hsl(210, 4%, 9%);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c3073F;
+}
+
+body {
+  overflow: hidden;
+}
+
+.section1 {
+  background: url(../image/172115910476babc315d1f63aa76e083.jpg);
+  display: flex;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  /* mix-blend-mode: multiply; */
+  height: 100vh;
+  width: 100%;
+}
+.section1 .couleur {
+  background-color: rgba(8, 34, 52, 0.5176470588);
+  box-shadow: 0 0 50px aqua;
+  animation: animate 3s linear infinite;
+  height: 86vh;
+  top: -48px;
+}
+.section1 .couleur .group .input {
+  color: white;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+}
+.section1 .couleur .group label {
+  position: absolute;
+  color: white;
+  top: 33%;
+  left: 84px;
+  transition: 0.5s;
+}
+.section1 .couleur .group input:focus ~ label, .section1 .couleur .group input:valid ~ label {
+  top: 140px;
+}
+.section1 .couleur .group .pass {
+  top: 52%;
+}
+.section1 .couleur .group input:focus ~ .pass, .section1 .couleur .group input:valid ~ .pass {
+  top: 46%;
+}
+.section1 .couleur .group .button {
+  margin-right: 66px;
+}
+.section1 .couleur .group .button button {
+  background-color: transparent;
+  color: white;
+}
+.section1 .couleur .anima {
+  animation: opct 2s linear forwards;
+}
+@keyframes opct {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.section1 .couleur .button {
+  margin-right: 71px;
+}
+@keyframes animate {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.img {
+  position: absolute;
+}
+.img .img1 {
+  position: absolute;
+  height: 616px;
+  left: 326px;
+  top: -22px;
+  z-index: 1;
+  animation: lft 2s linear forwards;
+}
+@keyframes lft {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-45vh);
+  }
+  100% {
+    transform: translateX(-45vh) translateY(-200vh);
+  }
+}
+.img .img2 {
+  position: absolute;
+  height: 616px;
+  left: 632.9px;
+  top: -22px;
+  z-index: 1;
+  animation: rgt 2s linear forwards;
+}
+@keyframes rgt {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(45vh);
+  }
+  100% {
+    transform: translateX(45vh) translateY(-200vh);
+  }
+}
+
+.couleur {
+  background-color: rgba(8, 34, 52, 0.5176470588);
+  box-shadow: 0 0 50px aqua;
+  animation: animate 3s linear infinite;
+}
+.couleur .input {
+  color: white;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+}
+.couleur .groupusername label,
+.couleur .groupemail label,
+.couleur .grouppass label,
+.couleur .groupvalidP label {
+  position: absolute;
+  color: white;
+  left: 84px;
+  transition: 0.5s;
+}
+.couleur .groupusername input:focus ~ label, .couleur .groupusername input:valid ~ label {
+  top: 16%;
+}
+.couleur .groupemail input:focus ~ label, .couleur .groupemail input:valid ~ label {
+  top: 32%;
+}
+.couleur .grouppass input:focus ~ label, .couleur .grouppass input:valid ~ label {
+  top: 46%;
+}
+.couleur .groupvalidP input:focus ~ label, .couleur .groupvalidP input:valid ~ label {
+  top: 58.7%;
+}
+
+/*# sourceMappingURL=login.css.map */

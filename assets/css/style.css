@@ -1,0 +1,2870 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "DM Sans", sans-serif;
+  background-color: hsl(210, 4%, 9%);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c3073F;
+}
+
+a {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-block: 10px;
+  border-block-end: 1px solid hsla(0, 0%, 100%, 0.2);
+  z-index: 5;
+  transition: 250ms ease;
+}
+
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.topbar .container p {
+  margin-bottom: 0rem;
+}
+
+.topbar .container .block {
+  display: flex;
+  gap: 10vh;
+  margin-top: 2px;
+}
+
+.topbar .container .block .info {
+  display: flex;
+  gap: 10px;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 834px) {
+  .topbar .container .block {
+    display: none;
+  }
+}
+
+.topbar:has(~ .header.active) {
+  transform: translateY(-100%);
+}
+
+.topbar .hover-underline {
+  position: relative;
+  max-width: max-content;
+}
+
+.topbar .hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  border-block: 1px solid #c3073F;
+  transform: scaleX(0.2);
+  opacity: 0;
+  transition: 500ms ease;
+}
+
+.topbar .hover-underline:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.topbar a:hover {
+  color: #c3073F;
+}
+
+.topbar .block1 {
+  display: none;
+}
+
+@media only screen and (max-width: 834px) {
+  .topbar .block1 {
+    display: flex;
+    gap: 6em;
+  }
+
+  .topbar .info {
+    width: 313px;
+    display: flex;
+    gap: 12px;
+    height: 26px;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  padding-block: 34px;
+  z-index: 4;
+  border-block-end: 1px solid transparent;
+  transition: 250ms ease;
+}
+
+.header.active {
+  padding-block: 20px;
+  background-color: hsl(0, 0%, 13%);
+  border-color: hsla(0, 0%, 0%, 0.15);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.header .container .logo img {
+  width: 21vh;
+  height: 21vh;
+  border-radius: 50%;
+  position: fixed;
+  top: -14px;
+  left: 63px;
+}
+
+.header.hide {
+  transform: translateY(-100%);
+  transition-delay: 250ms;
+}
+
+.header nav {
+  display: flex;
+  margin-inline: 30px;
+}
+
+.header nav .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.header nav .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.header nav .btn .text {
+  transition: 250ms ease;
+}
+
+.header nav .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.header nav .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.header nav .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.header nav .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header nav .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.header nav .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.header nav .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.header nav .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.header nav .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.header nav .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+.header nav .ptB {
+  margin-right: -77px;
+  margin-left: 59px;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 3vh;
+  margin-top: 17px;
+}
+
+.header nav ul .hover-underline {
+  position: relative;
+  max-width: max-content;
+}
+
+.header nav ul .hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  border-block: 1px solid #c3073F;
+  transform: scaleX(0.2);
+  opacity: 0;
+  transition: 500ms ease;
+}
+
+.header nav ul .hover-underline:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.header nav ul a:hover {
+  color: #c3073F !important;
+}
+
+.header nav span:hover {
+  color: #c3073F;
+  cursor: pointer;
+  /* font-weight: bolder; */
+}
+
+/* slide */
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  z-index: -100;
+  filter: contrast(0.7);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 16, 16, 0.473);
+  /* Couleur semi-transparente */
+}
+
+.slider {
+  position: relative;
+  padding-block: 120px;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  top: -120px;
+}
+
+.slider .hauteur {
+  height: 100vh;
+}
+
+.slider .hauteur .anime {
+  opacity: 0.5;
+  animation: anime 5s alternate;
+}
+
+@keyframes anime {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+.slider .hauteur .carousel-item {
+  height: 100vh;
+  min-height: 300px;
+}
+
+.slider .hauteur .carousel-caption {
+  bottom: 97px;
+}
+
+.slider .hauteur .carousel-caption h5 {
+  font-size: 60px;
+  text-transform: uppercase;
+  letter-spacing: 25px;
+  margin-top: 25px;
+  font-weight: 900;
+  font-family: "Forum", cursive;
+  animation-delay: 500ms;
+  animation: sliderReveal 1s ease forwards;
+}
+
+.slider .hauteur .carousel-caption p {
+  font-size: 18px;
+  margin: auto;
+  width: 60%;
+  line-height: 1.9;
+  margin-bottom: 22px;
+  animation-delay: 1000ms !important;
+  opacity: 0;
+  animation: sliderReveal 1s ease forwards;
+}
+
+.slider .hauteur .carousel-caption .button1 {
+  animation: sliderReveal 1s ease forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
+}
+
+.slider .hauteur .carousel-caption .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.slider .hauteur .carousel-caption .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.slider .hauteur .carousel-caption .btn .text {
+  transition: 250ms ease;
+}
+
+.slider .hauteur .carousel-caption .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.slider .hauteur .carousel-caption .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.slider .hauteur .carousel-caption .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.slider .hauteur .carousel-caption .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider .hauteur .carousel-caption .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.slider .hauteur .carousel-caption .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.slider .hauteur .carousel-caption .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.slider .hauteur .carousel-caption .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.slider .hauteur .carousel-caption .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.slider .hauteur .carousel-caption .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes sliderReveal {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.room .rooms {
+  margin-top: -187px;
+  font-family: forte;
+  font-size: 50px;
+  animation: lights 5s 750ms linear infinite;
+  margin-bottom: 80px;
+}
+
+.room .animahaut,
+.room .animahaut1 {
+  animation: move 5s linear infinite;
+}
+
+.room .animahaut .root,
+.room .animahaut1 .root {
+  position: relative;
+  filter: brightness(95%);
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.room .animahaut .root h5,
+.room .animahaut1 .root h5 {
+  position: absolute;
+  font-size: 25px;
+  color: white;
+  font-weight: 500;
+  left: 20px;
+  bottom: 105px;
+  cursor: pointer;
+}
+
+.room .animahaut .root p,
+.room .animahaut1 .root p {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  left: 20px;
+  bottom: 80px;
+  cursor: pointer;
+}
+
+.room .animahaut .root img,
+.room .animahaut1 .root img {
+  margin-bottom: 40px;
+  height: 500px;
+  border-radius: 27px;
+  width: 100%;
+}
+
+.room .animahaut .root:hover,
+.room .animahaut1 .root:hover {
+  filter: brightness(120%);
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.room .animahaut .root:hover .noir,
+.room .animahaut1 .root:hover .noir {
+  display: block;
+}
+
+.room .animahaut .root .noir,
+.room .animahaut1 .root .noir {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  height: 31%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-bottom-right-radius: 14%;
+  border-bottom-left-radius: 14%;
+}
+
+.room .animahaut .root .noir h5,
+.room .animahaut .root .noir p,
+.room .animahaut1 .root .noir h5,
+.room .animahaut1 .root .noir p {
+  margin: 0;
+}
+
+.room .animahaut .root .noir:hover,
+.room .animahaut1 .root .noir:hover {
+  filter: brightness(120%);
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.room .animahaut1 {
+  animation: moveOne 5s linear infinite;
+}
+
+.room .animahaut1 .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.room .animahaut1 .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.room .animahaut1 .btn .text {
+  transition: 250ms ease;
+}
+
+.room .animahaut1 .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.room .animahaut1 .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.room .animahaut1 .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.room .animahaut1 .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.room .animahaut1 .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.room .animahaut1 .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.room .animahaut1 .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.room .animahaut1 .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.room .animahaut1 .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.room .animahaut1 .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+@keyframes moveOne {
+
+  0%,
+  100% {
+    transform: translateY(30px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes move {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(30px);
+  }
+}
+
+.room .article {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.room .article .animahaut {
+  animation: move 5s linear infinite;
+}
+
+@keyframes move {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(30px);
+  }
+}
+
+@keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow: 0 0 1em hsla(6, 100%, 50%, 0.2), 0 0 0.125em hsla(6, 100%, 50%, 0.2), -1em -0.125em 0.5em hsla(40, 100%, 60%, 0), 1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+
+  30% {
+    color: hsl(230, 80%, 90%);
+    text-shadow: 0 0 1em hsla(15, 100%, 50%, 0.5), 0 0 0.125em hsla(8, 100%, 60%, 0.5), -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2), 0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+
+  40% {
+    color: hsl(230, 100%, 95%);
+    text-shadow: 0 0 1em hsla(6, 100%, 50%, 0.2), 0 0 0.125em hsla(6, 100%, 90%, 0.5), -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2), 0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow: 0 0 1em hsla(6, 100%, 50%, 0.2), 0 0 0.125em hsla(6, 100%, 50%, 0.2), 0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2), -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow: 0 0 1em hsla(6, 100%, 50%, 0.2), 0 0 0.125em hsla(6, 100%, 50%, 0.2), 1em -0.125em 0.5em hsla(40, 100%, 60%, 0), -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+}
+
+.colorBg {
+  background: url(../image/Vector\ 1.svg);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 140vh;
+  width: 100%;
+  background-position-y: top;
+}
+
+.colorBg .ani {
+  font-family: forte;
+  font-size: 50px;
+  /* animation: animated 5s linear infinite; */
+}
+
+/* @keyframes animated {
+  0% {
+    color: white;
+    box-shadow: none;
+  }
+
+  50% {
+    color: #c3073F;
+    text-shadow: 0 0 10px #c3073f65, 0 0 20px #c3073f65, 0 0 40px #c3073f65, 0 0 80px #c3073f65, 0 0 160px #c3073f65;
+  }
+} */
+
+.colorBg .svg svg {
+  font-size: 55px;
+}
+
+.colorBg .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.colorBg .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.colorBg .btn .text {
+  transition: 250ms ease;
+}
+
+.colorBg .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.colorBg .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.colorBg .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.colorBg .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.colorBg .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.colorBg .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.colorBg .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.colorBg .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.colorBg .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.colorBg .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+.story {
+  margin-top: -138px;
+}
+
+.story .quality {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7vh;
+  /* width: 68%; */
+  color: #c3073F;
+  ;
+}
+
+.story h1 {
+  font-size: 50px;
+  color: #fff;
+  position: absolute;
+}
+
+.story h1:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #8ca6a7;
+}
+
+.story h1:nth-child(2) {
+  color: #c3073F;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+  }
+
+  50% {
+    clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
+
+.story .badge1 {
+  width: 35px;
+  margin-bottom: 322px;
+  margin-left: -90px;
+  animation: move 5s linear infinite;
+}
+
+.story .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.story .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.story .btn .text {
+  transition: 250ms ease;
+}
+
+.story .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.story .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.story .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.story .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.story .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.story .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.story .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.story .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.story .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.story .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+footer {
+  display: flex;
+  min-height: 64vh;
+  background: url(../image/footer-form-bg.png), url(../image/footer-illustration.png);
+  background-blend-mode: multiply;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* height: 500px; */
+}
+
+footer .ul {
+  display: block;
+}
+
+footer .ul .hover-underline {
+  position: relative;
+  max-width: max-content;
+}
+
+footer .ul .hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  border-block: 1px solid #c3073F;
+  transform: scaleX(0.2);
+  opacity: 0;
+  transition: 500ms ease;
+}
+
+footer .ul .hover-underline:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+footer .ul a:hover {
+  color: #c3073F;
+}
+
+footer .svg1 svg {
+  font-size: 6vh;
+}
+
+footer .svg1 svg svg:hover {
+  cursor: pointer;
+}
+
+footer a .hover-underline {
+  position: relative;
+  max-width: max-content;
+}
+
+footer a .hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  border-block: 1px solid #c3073F;
+  transform: scaleX(0.2);
+  opacity: 0;
+  transition: 500ms ease;
+}
+
+footer a .hover-underline:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+footer a a:hover {
+  color: #c3073F;
+}
+
+.body {
+  /* display: flex;
+  flex-direction: column; */
+  min-height: 88vh;
+  background: url(../image/Inspiration-deco-les-plus-belles-chambres-d-hotels-du-monde.jpg), rgba(8, 34, 52, 0.5176470588);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 149vh;
+  margin-left: -230px;
+}
+
+.music {
+  position: fixed;
+  z-index: 10;
+  left: 94%;
+  top: 1%;
+}
+
+.music .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.music .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.music .btn .text {
+  transition: 250ms ease;
+}
+
+.music .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.music .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.music .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.music .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.music .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.music .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.music .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.music .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.music .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.music .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+.music #playButton {
+  /* background-color: #3498db;
+  color: white; */
+  padding: 12% 53%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.food {
+  width: 100%;
+}
+
+.food .headerFood {
+  background: url(../image/event-birthday.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 37vh;
+  height: 100vh;
+  width: 100%;
+}
+
+.food .headerFood #nouriture,
+.food .headerFood #desserts,
+.food .headerFood #boisson {
+  display: none;
+}
+
+.food .menu #breakfast,
+.food .menu #burgers,
+.food .menu #pizza,
+.food .menu #grillade,
+.food .menu #patte,
+.food .menu #tarte,
+.food .menu #salade,
+.food .menu #special,
+.food .menu #glace,
+.food .menu #cookies,
+.food .menu #patiserie,
+.food .menu #pudding,
+.food .menu #SaladeDeFruit,
+.food .menu #tartesD,
+.food .menu #gateau,
+.food .menu #specialD,
+.food .menu #star,
+.food .menu #bChaude,
+.food .menu #cocktails,
+.food .menu #milkshakes,
+.food .menu #wines,
+.food .menuDeser #breakfast,
+.food .menuDeser #burgers,
+.food .menuDeser #pizza,
+.food .menuDeser #grillade,
+.food .menuDeser #patte,
+.food .menuDeser #tarte,
+.food .menuDeser #salade,
+.food .menuDeser #special,
+.food .menuDeser #glace,
+.food .menuDeser #cookies,
+.food .menuDeser #patiserie,
+.food .menuDeser #pudding,
+.food .menuDeser #SaladeDeFruit,
+.food .menuDeser #tartesD,
+.food .menuDeser #gateau,
+.food .menuDeser #specialD,
+.food .menuDeser #star,
+.food .menuDeser #bChaude,
+.food .menuDeser #cocktails,
+.food .menuDeser #milkshakes,
+.food .menuDeser #wines,
+.food .menuBoisson #breakfast,
+.food .menuBoisson #burgers,
+.food .menuBoisson #pizza,
+.food .menuBoisson #grillade,
+.food .menuBoisson #patte,
+.food .menuBoisson #tarte,
+.food .menuBoisson #salade,
+.food .menuBoisson #special,
+.food .menuBoisson #glace,
+.food .menuBoisson #cookies,
+.food .menuBoisson #patiserie,
+.food .menuBoisson #pudding,
+.food .menuBoisson #SaladeDeFruit,
+.food .menuBoisson #tartesD,
+.food .menuBoisson #gateau,
+.food .menuBoisson #specialD,
+.food .menuBoisson #star,
+.food .menuBoisson #bChaude,
+.food .menuBoisson #cocktails,
+.food .menuBoisson #milkshakes,
+.food .menuBoisson #wines {
+  display: none;
+}
+
+.food .menu #breakfast .btn,
+.food .menu #burgers .btn,
+.food .menu #pizza .btn,
+.food .menu #grillade .btn,
+.food .menu #patte .btn,
+.food .menu #tarte .btn,
+.food .menu #salade .btn,
+.food .menu #special .btn,
+.food .menu #glace .btn,
+.food .menu #cookies .btn,
+.food .menu #patiserie .btn,
+.food .menu #pudding .btn,
+.food .menu #SaladeDeFruit .btn,
+.food .menu #tartesD .btn,
+.food .menu #gateau .btn,
+.food .menu #specialD .btn,
+.food .menu #star .btn,
+.food .menu #bChaude .btn,
+.food .menu #cocktails .btn,
+.food .menu #milkshakes .btn,
+.food .menu #wines .btn,
+.food .menuDeser #breakfast .btn,
+.food .menuDeser #burgers .btn,
+.food .menuDeser #pizza .btn,
+.food .menuDeser #grillade .btn,
+.food .menuDeser #patte .btn,
+.food .menuDeser #tarte .btn,
+.food .menuDeser #salade .btn,
+.food .menuDeser #special .btn,
+.food .menuDeser #glace .btn,
+.food .menuDeser #cookies .btn,
+.food .menuDeser #patiserie .btn,
+.food .menuDeser #pudding .btn,
+.food .menuDeser #SaladeDeFruit .btn,
+.food .menuDeser #tartesD .btn,
+.food .menuDeser #gateau .btn,
+.food .menuDeser #specialD .btn,
+.food .menuDeser #star .btn,
+.food .menuDeser #bChaude .btn,
+.food .menuDeser #cocktails .btn,
+.food .menuDeser #milkshakes .btn,
+.food .menuDeser #wines .btn,
+.food .menuBoisson #breakfast .btn,
+.food .menuBoisson #burgers .btn,
+.food .menuBoisson #pizza .btn,
+.food .menuBoisson #grillade .btn,
+.food .menuBoisson #patte .btn,
+.food .menuBoisson #tarte .btn,
+.food .menuBoisson #salade .btn,
+.food .menuBoisson #special .btn,
+.food .menuBoisson #glace .btn,
+.food .menuBoisson #cookies .btn,
+.food .menuBoisson #patiserie .btn,
+.food .menuBoisson #pudding .btn,
+.food .menuBoisson #SaladeDeFruit .btn,
+.food .menuBoisson #tartesD .btn,
+.food .menuBoisson #gateau .btn,
+.food .menuBoisson #specialD .btn,
+.food .menuBoisson #star .btn,
+.food .menuBoisson #bChaude .btn,
+.food .menuBoisson #cocktails .btn,
+.food .menuBoisson #milkshakes .btn,
+.food .menuBoisson #wines .btn {
+  position: relative;
+  color: #c3073F;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  max-width: max-content;
+  border: 2px solid #c3073F;
+  padding: 12px 45px;
+  overflow: hidden;
+  z-index: 1;
+  width: auto;
+}
+
+.food .menu #breakfast .btn::before,
+.food .menu #burgers .btn::before,
+.food .menu #pizza .btn::before,
+.food .menu #grillade .btn::before,
+.food .menu #patte .btn::before,
+.food .menu #tarte .btn::before,
+.food .menu #salade .btn::before,
+.food .menu #special .btn::before,
+.food .menu #glace .btn::before,
+.food .menu #cookies .btn::before,
+.food .menu #patiserie .btn::before,
+.food .menu #pudding .btn::before,
+.food .menu #SaladeDeFruit .btn::before,
+.food .menu #tartesD .btn::before,
+.food .menu #gateau .btn::before,
+.food .menu #specialD .btn::before,
+.food .menu #star .btn::before,
+.food .menu #bChaude .btn::before,
+.food .menu #cocktails .btn::before,
+.food .menu #milkshakes .btn::before,
+.food .menu #wines .btn::before,
+.food .menuDeser #breakfast .btn::before,
+.food .menuDeser #burgers .btn::before,
+.food .menuDeser #pizza .btn::before,
+.food .menuDeser #grillade .btn::before,
+.food .menuDeser #patte .btn::before,
+.food .menuDeser #tarte .btn::before,
+.food .menuDeser #salade .btn::before,
+.food .menuDeser #special .btn::before,
+.food .menuDeser #glace .btn::before,
+.food .menuDeser #cookies .btn::before,
+.food .menuDeser #patiserie .btn::before,
+.food .menuDeser #pudding .btn::before,
+.food .menuDeser #SaladeDeFruit .btn::before,
+.food .menuDeser #tartesD .btn::before,
+.food .menuDeser #gateau .btn::before,
+.food .menuDeser #specialD .btn::before,
+.food .menuDeser #star .btn::before,
+.food .menuDeser #bChaude .btn::before,
+.food .menuDeser #cocktails .btn::before,
+.food .menuDeser #milkshakes .btn::before,
+.food .menuDeser #wines .btn::before,
+.food .menuBoisson #breakfast .btn::before,
+.food .menuBoisson #burgers .btn::before,
+.food .menuBoisson #pizza .btn::before,
+.food .menuBoisson #grillade .btn::before,
+.food .menuBoisson #patte .btn::before,
+.food .menuBoisson #tarte .btn::before,
+.food .menuBoisson #salade .btn::before,
+.food .menuBoisson #special .btn::before,
+.food .menuBoisson #glace .btn::before,
+.food .menuBoisson #cookies .btn::before,
+.food .menuBoisson #patiserie .btn::before,
+.food .menuBoisson #pudding .btn::before,
+.food .menuBoisson #SaladeDeFruit .btn::before,
+.food .menuBoisson #tartesD .btn::before,
+.food .menuBoisson #gateau .btn::before,
+.food .menuBoisson #specialD .btn::before,
+.food .menuBoisson #star .btn::before,
+.food .menuBoisson #bChaude .btn::before,
+.food .menuBoisson #cocktails .btn::before,
+.food .menuBoisson #milkshakes .btn::before,
+.food .menuBoisson #wines .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #c3073F;
+  transition: 500ms ease;
+  z-index: -1;
+  width: auto;
+}
+
+.food .menu #breakfast .btn .text,
+.food .menu #burgers .btn .text,
+.food .menu #pizza .btn .text,
+.food .menu #grillade .btn .text,
+.food .menu #patte .btn .text,
+.food .menu #tarte .btn .text,
+.food .menu #salade .btn .text,
+.food .menu #special .btn .text,
+.food .menu #glace .btn .text,
+.food .menu #cookies .btn .text,
+.food .menu #patiserie .btn .text,
+.food .menu #pudding .btn .text,
+.food .menu #SaladeDeFruit .btn .text,
+.food .menu #tartesD .btn .text,
+.food .menu #gateau .btn .text,
+.food .menu #specialD .btn .text,
+.food .menu #star .btn .text,
+.food .menu #bChaude .btn .text,
+.food .menu #cocktails .btn .text,
+.food .menu #milkshakes .btn .text,
+.food .menu #wines .btn .text,
+.food .menuDeser #breakfast .btn .text,
+.food .menuDeser #burgers .btn .text,
+.food .menuDeser #pizza .btn .text,
+.food .menuDeser #grillade .btn .text,
+.food .menuDeser #patte .btn .text,
+.food .menuDeser #tarte .btn .text,
+.food .menuDeser #salade .btn .text,
+.food .menuDeser #special .btn .text,
+.food .menuDeser #glace .btn .text,
+.food .menuDeser #cookies .btn .text,
+.food .menuDeser #patiserie .btn .text,
+.food .menuDeser #pudding .btn .text,
+.food .menuDeser #SaladeDeFruit .btn .text,
+.food .menuDeser #tartesD .btn .text,
+.food .menuDeser #gateau .btn .text,
+.food .menuDeser #specialD .btn .text,
+.food .menuDeser #star .btn .text,
+.food .menuDeser #bChaude .btn .text,
+.food .menuDeser #cocktails .btn .text,
+.food .menuDeser #milkshakes .btn .text,
+.food .menuDeser #wines .btn .text,
+.food .menuBoisson #breakfast .btn .text,
+.food .menuBoisson #burgers .btn .text,
+.food .menuBoisson #pizza .btn .text,
+.food .menuBoisson #grillade .btn .text,
+.food .menuBoisson #patte .btn .text,
+.food .menuBoisson #tarte .btn .text,
+.food .menuBoisson #salade .btn .text,
+.food .menuBoisson #special .btn .text,
+.food .menuBoisson #glace .btn .text,
+.food .menuBoisson #cookies .btn .text,
+.food .menuBoisson #patiserie .btn .text,
+.food .menuBoisson #pudding .btn .text,
+.food .menuBoisson #SaladeDeFruit .btn .text,
+.food .menuBoisson #tartesD .btn .text,
+.food .menuBoisson #gateau .btn .text,
+.food .menuBoisson #specialD .btn .text,
+.food .menuBoisson #star .btn .text,
+.food .menuBoisson #bChaude .btn .text,
+.food .menuBoisson #cocktails .btn .text,
+.food .menuBoisson #milkshakes .btn .text,
+.food .menuBoisson #wines .btn .text {
+  transition: 250ms ease;
+}
+
+.food .menu #breakfast .btn .text-2,
+.food .menu #burgers .btn .text-2,
+.food .menu #pizza .btn .text-2,
+.food .menu #grillade .btn .text-2,
+.food .menu #patte .btn .text-2,
+.food .menu #tarte .btn .text-2,
+.food .menu #salade .btn .text-2,
+.food .menu #special .btn .text-2,
+.food .menu #glace .btn .text-2,
+.food .menu #cookies .btn .text-2,
+.food .menu #patiserie .btn .text-2,
+.food .menu #pudding .btn .text-2,
+.food .menu #SaladeDeFruit .btn .text-2,
+.food .menu #tartesD .btn .text-2,
+.food .menu #gateau .btn .text-2,
+.food .menu #specialD .btn .text-2,
+.food .menu #star .btn .text-2,
+.food .menu #bChaude .btn .text-2,
+.food .menu #cocktails .btn .text-2,
+.food .menu #milkshakes .btn .text-2,
+.food .menu #wines .btn .text-2,
+.food .menuDeser #breakfast .btn .text-2,
+.food .menuDeser #burgers .btn .text-2,
+.food .menuDeser #pizza .btn .text-2,
+.food .menuDeser #grillade .btn .text-2,
+.food .menuDeser #patte .btn .text-2,
+.food .menuDeser #tarte .btn .text-2,
+.food .menuDeser #salade .btn .text-2,
+.food .menuDeser #special .btn .text-2,
+.food .menuDeser #glace .btn .text-2,
+.food .menuDeser #cookies .btn .text-2,
+.food .menuDeser #patiserie .btn .text-2,
+.food .menuDeser #pudding .btn .text-2,
+.food .menuDeser #SaladeDeFruit .btn .text-2,
+.food .menuDeser #tartesD .btn .text-2,
+.food .menuDeser #gateau .btn .text-2,
+.food .menuDeser #specialD .btn .text-2,
+.food .menuDeser #star .btn .text-2,
+.food .menuDeser #bChaude .btn .text-2,
+.food .menuDeser #cocktails .btn .text-2,
+.food .menuDeser #milkshakes .btn .text-2,
+.food .menuDeser #wines .btn .text-2,
+.food .menuBoisson #breakfast .btn .text-2,
+.food .menuBoisson #burgers .btn .text-2,
+.food .menuBoisson #pizza .btn .text-2,
+.food .menuBoisson #grillade .btn .text-2,
+.food .menuBoisson #patte .btn .text-2,
+.food .menuBoisson #tarte .btn .text-2,
+.food .menuBoisson #salade .btn .text-2,
+.food .menuBoisson #special .btn .text-2,
+.food .menuBoisson #glace .btn .text-2,
+.food .menuBoisson #cookies .btn .text-2,
+.food .menuBoisson #patiserie .btn .text-2,
+.food .menuBoisson #pudding .btn .text-2,
+.food .menuBoisson #SaladeDeFruit .btn .text-2,
+.food .menuBoisson #tartesD .btn .text-2,
+.food .menuBoisson #gateau .btn .text-2,
+.food .menuBoisson #specialD .btn .text-2,
+.food .menuBoisson #star .btn .text-2,
+.food .menuBoisson #bChaude .btn .text-2,
+.food .menuBoisson #cocktails .btn .text-2,
+.food .menuBoisson #milkshakes .btn .text-2,
+.food .menuBoisson #wines .btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: rgba(14, 13, 11, 0);
+}
+
+.food .menu #breakfast .btn:is(:hover, :focus-visible)::before,
+.food .menu #burgers .btn:is(:hover, :focus-visible)::before,
+.food .menu #pizza .btn:is(:hover, :focus-visible)::before,
+.food .menu #grillade .btn:is(:hover, :focus-visible)::before,
+.food .menu #patte .btn:is(:hover, :focus-visible)::before,
+.food .menu #tarte .btn:is(:hover, :focus-visible)::before,
+.food .menu #salade .btn:is(:hover, :focus-visible)::before,
+.food .menu #special .btn:is(:hover, :focus-visible)::before,
+.food .menu #glace .btn:is(:hover, :focus-visible)::before,
+.food .menu #cookies .btn:is(:hover, :focus-visible)::before,
+.food .menu #patiserie .btn:is(:hover, :focus-visible)::before,
+.food .menu #pudding .btn:is(:hover, :focus-visible)::before,
+.food .menu #SaladeDeFruit .btn:is(:hover, :focus-visible)::before,
+.food .menu #tartesD .btn:is(:hover, :focus-visible)::before,
+.food .menu #gateau .btn:is(:hover, :focus-visible)::before,
+.food .menu #specialD .btn:is(:hover, :focus-visible)::before,
+.food .menu #star .btn:is(:hover, :focus-visible)::before,
+.food .menu #bChaude .btn:is(:hover, :focus-visible)::before,
+.food .menu #cocktails .btn:is(:hover, :focus-visible)::before,
+.food .menu #milkshakes .btn:is(:hover, :focus-visible)::before,
+.food .menu #wines .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #breakfast .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #burgers .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #pizza .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #grillade .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #patte .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #tarte .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #salade .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #special .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #glace .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #cookies .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #patiserie .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #pudding .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #SaladeDeFruit .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #tartesD .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #gateau .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #specialD .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #star .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #bChaude .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #cocktails .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #milkshakes .btn:is(:hover, :focus-visible)::before,
+.food .menuDeser #wines .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #breakfast .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #burgers .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #pizza .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #grillade .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #patte .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #tarte .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #salade .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #special .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #glace .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #cookies .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #patiserie .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #pudding .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #SaladeDeFruit .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #tartesD .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #gateau .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #specialD .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #star .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #bChaude .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #cocktails .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #milkshakes .btn:is(:hover, :focus-visible)::before,
+.food .menuBoisson #wines .btn:is(:hover, :focus-visible)::before {
+  bottom: -50%;
+}
+
+.food .menu #breakfast .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #burgers .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #pizza .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #grillade .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #patte .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #tarte .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #salade .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #special .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #glace .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #cookies .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #patiserie .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #pudding .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #tartesD .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #gateau .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #specialD .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #star .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #bChaude .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #cocktails .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #milkshakes .btn:is(:hover, :focus-visible) .text-1,
+.food .menu #wines .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #breakfast .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #burgers .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #pizza .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #grillade .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #patte .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #tarte .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #salade .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #special .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #glace .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #cookies .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #patiserie .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #pudding .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #tartesD .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #gateau .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #specialD .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #star .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #bChaude .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #cocktails .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #milkshakes .btn:is(:hover, :focus-visible) .text-1,
+.food .menuDeser #wines .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #breakfast .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #burgers .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #pizza .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #grillade .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #patte .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #tarte .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #salade .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #special .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #glace .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #cookies .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #patiserie .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #pudding .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #tartesD .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #gateau .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #specialD .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #star .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #bChaude .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #cocktails .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #milkshakes .btn:is(:hover, :focus-visible) .text-1,
+.food .menuBoisson #wines .btn:is(:hover, :focus-visible) .text-1 {
+  transform: translateY(-40px);
+}
+
+.food .menu #breakfast .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #burgers .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #pizza .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #grillade .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #patte .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #tarte .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #salade .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #special .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #glace .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #cookies .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #patiserie .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #pudding .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #tartesD .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #gateau .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #specialD .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #star .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #bChaude .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #cocktails .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #milkshakes .btn:is(:hover, :focus-visible) .text-2,
+.food .menu #wines .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #breakfast .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #burgers .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #pizza .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #grillade .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #patte .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #tarte .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #salade .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #special .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #glace .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #cookies .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #patiserie .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #pudding .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #tartesD .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #gateau .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #specialD .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #star .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #bChaude .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #cocktails .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #milkshakes .btn:is(:hover, :focus-visible) .text-2,
+.food .menuDeser #wines .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #breakfast .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #burgers .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #pizza .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #grillade .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #patte .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #tarte .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #salade .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #special .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #glace .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #cookies .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #patiserie .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #pudding .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #SaladeDeFruit .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #tartesD .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #gateau .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #specialD .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #star .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #bChaude .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #cocktails .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #milkshakes .btn:is(:hover, :focus-visible) .text-2,
+.food .menuBoisson #wines .btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.food .menu #breakfast .btn-secondary,
+.food .menu #burgers .btn-secondary,
+.food .menu #pizza .btn-secondary,
+.food .menu #grillade .btn-secondary,
+.food .menu #patte .btn-secondary,
+.food .menu #tarte .btn-secondary,
+.food .menu #salade .btn-secondary,
+.food .menu #special .btn-secondary,
+.food .menu #glace .btn-secondary,
+.food .menu #cookies .btn-secondary,
+.food .menu #patiserie .btn-secondary,
+.food .menu #pudding .btn-secondary,
+.food .menu #SaladeDeFruit .btn-secondary,
+.food .menu #tartesD .btn-secondary,
+.food .menu #gateau .btn-secondary,
+.food .menu #specialD .btn-secondary,
+.food .menu #star .btn-secondary,
+.food .menu #bChaude .btn-secondary,
+.food .menu #cocktails .btn-secondary,
+.food .menu #milkshakes .btn-secondary,
+.food .menu #wines .btn-secondary,
+.food .menuDeser #breakfast .btn-secondary,
+.food .menuDeser #burgers .btn-secondary,
+.food .menuDeser #pizza .btn-secondary,
+.food .menuDeser #grillade .btn-secondary,
+.food .menuDeser #patte .btn-secondary,
+.food .menuDeser #tarte .btn-secondary,
+.food .menuDeser #salade .btn-secondary,
+.food .menuDeser #special .btn-secondary,
+.food .menuDeser #glace .btn-secondary,
+.food .menuDeser #cookies .btn-secondary,
+.food .menuDeser #patiserie .btn-secondary,
+.food .menuDeser #pudding .btn-secondary,
+.food .menuDeser #SaladeDeFruit .btn-secondary,
+.food .menuDeser #tartesD .btn-secondary,
+.food .menuDeser #gateau .btn-secondary,
+.food .menuDeser #specialD .btn-secondary,
+.food .menuDeser #star .btn-secondary,
+.food .menuDeser #bChaude .btn-secondary,
+.food .menuDeser #cocktails .btn-secondary,
+.food .menuDeser #milkshakes .btn-secondary,
+.food .menuDeser #wines .btn-secondary,
+.food .menuBoisson #breakfast .btn-secondary,
+.food .menuBoisson #burgers .btn-secondary,
+.food .menuBoisson #pizza .btn-secondary,
+.food .menuBoisson #grillade .btn-secondary,
+.food .menuBoisson #patte .btn-secondary,
+.food .menuBoisson #tarte .btn-secondary,
+.food .menuBoisson #salade .btn-secondary,
+.food .menuBoisson #special .btn-secondary,
+.food .menuBoisson #glace .btn-secondary,
+.food .menuBoisson #cookies .btn-secondary,
+.food .menuBoisson #patiserie .btn-secondary,
+.food .menuBoisson #pudding .btn-secondary,
+.food .menuBoisson #SaladeDeFruit .btn-secondary,
+.food .menuBoisson #tartesD .btn-secondary,
+.food .menuBoisson #gateau .btn-secondary,
+.food .menuBoisson #specialD .btn-secondary,
+.food .menuBoisson #star .btn-secondary,
+.food .menuBoisson #bChaude .btn-secondary,
+.food .menuBoisson #cocktails .btn-secondary,
+.food .menuBoisson #milkshakes .btn-secondary,
+.food .menuBoisson #wines .btn-secondary {
+  /* background-color: #c52f5c; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.food .menu #breakfast .btn-secondary::before,
+.food .menu #burgers .btn-secondary::before,
+.food .menu #pizza .btn-secondary::before,
+.food .menu #grillade .btn-secondary::before,
+.food .menu #patte .btn-secondary::before,
+.food .menu #tarte .btn-secondary::before,
+.food .menu #salade .btn-secondary::before,
+.food .menu #special .btn-secondary::before,
+.food .menu #glace .btn-secondary::before,
+.food .menu #cookies .btn-secondary::before,
+.food .menu #patiserie .btn-secondary::before,
+.food .menu #pudding .btn-secondary::before,
+.food .menu #SaladeDeFruit .btn-secondary::before,
+.food .menu #tartesD .btn-secondary::before,
+.food .menu #gateau .btn-secondary::before,
+.food .menu #specialD .btn-secondary::before,
+.food .menu #star .btn-secondary::before,
+.food .menu #bChaude .btn-secondary::before,
+.food .menu #cocktails .btn-secondary::before,
+.food .menu #milkshakes .btn-secondary::before,
+.food .menu #wines .btn-secondary::before,
+.food .menuDeser #breakfast .btn-secondary::before,
+.food .menuDeser #burgers .btn-secondary::before,
+.food .menuDeser #pizza .btn-secondary::before,
+.food .menuDeser #grillade .btn-secondary::before,
+.food .menuDeser #patte .btn-secondary::before,
+.food .menuDeser #tarte .btn-secondary::before,
+.food .menuDeser #salade .btn-secondary::before,
+.food .menuDeser #special .btn-secondary::before,
+.food .menuDeser #glace .btn-secondary::before,
+.food .menuDeser #cookies .btn-secondary::before,
+.food .menuDeser #patiserie .btn-secondary::before,
+.food .menuDeser #pudding .btn-secondary::before,
+.food .menuDeser #SaladeDeFruit .btn-secondary::before,
+.food .menuDeser #tartesD .btn-secondary::before,
+.food .menuDeser #gateau .btn-secondary::before,
+.food .menuDeser #specialD .btn-secondary::before,
+.food .menuDeser #star .btn-secondary::before,
+.food .menuDeser #bChaude .btn-secondary::before,
+.food .menuDeser #cocktails .btn-secondary::before,
+.food .menuDeser #milkshakes .btn-secondary::before,
+.food .menuDeser #wines .btn-secondary::before,
+.food .menuBoisson #breakfast .btn-secondary::before,
+.food .menuBoisson #burgers .btn-secondary::before,
+.food .menuBoisson #pizza .btn-secondary::before,
+.food .menuBoisson #grillade .btn-secondary::before,
+.food .menuBoisson #patte .btn-secondary::before,
+.food .menuBoisson #tarte .btn-secondary::before,
+.food .menuBoisson #salade .btn-secondary::before,
+.food .menuBoisson #special .btn-secondary::before,
+.food .menuBoisson #glace .btn-secondary::before,
+.food .menuBoisson #cookies .btn-secondary::before,
+.food .menuBoisson #patiserie .btn-secondary::before,
+.food .menuBoisson #pudding .btn-secondary::before,
+.food .menuBoisson #SaladeDeFruit .btn-secondary::before,
+.food .menuBoisson #tartesD .btn-secondary::before,
+.food .menuBoisson #gateau .btn-secondary::before,
+.food .menuBoisson #specialD .btn-secondary::before,
+.food .menuBoisson #star .btn-secondary::before,
+.food .menuBoisson #bChaude .btn-secondary::before,
+.food .menuBoisson #cocktails .btn-secondary::before,
+.food .menuBoisson #milkshakes .btn-secondary::before,
+.food .menuBoisson #wines .btn-secondary::before {
+  background-color: #c3073F;
+}
+
+.food .menu #breakfast .btn-secondary .text-2,
+.food .menu #burgers .btn-secondary .text-2,
+.food .menu #pizza .btn-secondary .text-2,
+.food .menu #grillade .btn-secondary .text-2,
+.food .menu #patte .btn-secondary .text-2,
+.food .menu #tarte .btn-secondary .text-2,
+.food .menu #salade .btn-secondary .text-2,
+.food .menu #special .btn-secondary .text-2,
+.food .menu #glace .btn-secondary .text-2,
+.food .menu #cookies .btn-secondary .text-2,
+.food .menu #patiserie .btn-secondary .text-2,
+.food .menu #pudding .btn-secondary .text-2,
+.food .menu #SaladeDeFruit .btn-secondary .text-2,
+.food .menu #tartesD .btn-secondary .text-2,
+.food .menu #gateau .btn-secondary .text-2,
+.food .menu #specialD .btn-secondary .text-2,
+.food .menu #star .btn-secondary .text-2,
+.food .menu #bChaude .btn-secondary .text-2,
+.food .menu #cocktails .btn-secondary .text-2,
+.food .menu #milkshakes .btn-secondary .text-2,
+.food .menu #wines .btn-secondary .text-2,
+.food .menuDeser #breakfast .btn-secondary .text-2,
+.food .menuDeser #burgers .btn-secondary .text-2,
+.food .menuDeser #pizza .btn-secondary .text-2,
+.food .menuDeser #grillade .btn-secondary .text-2,
+.food .menuDeser #patte .btn-secondary .text-2,
+.food .menuDeser #tarte .btn-secondary .text-2,
+.food .menuDeser #salade .btn-secondary .text-2,
+.food .menuDeser #special .btn-secondary .text-2,
+.food .menuDeser #glace .btn-secondary .text-2,
+.food .menuDeser #cookies .btn-secondary .text-2,
+.food .menuDeser #patiserie .btn-secondary .text-2,
+.food .menuDeser #pudding .btn-secondary .text-2,
+.food .menuDeser #SaladeDeFruit .btn-secondary .text-2,
+.food .menuDeser #tartesD .btn-secondary .text-2,
+.food .menuDeser #gateau .btn-secondary .text-2,
+.food .menuDeser #specialD .btn-secondary .text-2,
+.food .menuDeser #star .btn-secondary .text-2,
+.food .menuDeser #bChaude .btn-secondary .text-2,
+.food .menuDeser #cocktails .btn-secondary .text-2,
+.food .menuDeser #milkshakes .btn-secondary .text-2,
+.food .menuDeser #wines .btn-secondary .text-2,
+.food .menuBoisson #breakfast .btn-secondary .text-2,
+.food .menuBoisson #burgers .btn-secondary .text-2,
+.food .menuBoisson #pizza .btn-secondary .text-2,
+.food .menuBoisson #grillade .btn-secondary .text-2,
+.food .menuBoisson #patte .btn-secondary .text-2,
+.food .menuBoisson #tarte .btn-secondary .text-2,
+.food .menuBoisson #salade .btn-secondary .text-2,
+.food .menuBoisson #special .btn-secondary .text-2,
+.food .menuBoisson #glace .btn-secondary .text-2,
+.food .menuBoisson #cookies .btn-secondary .text-2,
+.food .menuBoisson #patiserie .btn-secondary .text-2,
+.food .menuBoisson #pudding .btn-secondary .text-2,
+.food .menuBoisson #SaladeDeFruit .btn-secondary .text-2,
+.food .menuBoisson #tartesD .btn-secondary .text-2,
+.food .menuBoisson #gateau .btn-secondary .text-2,
+.food .menuBoisson #specialD .btn-secondary .text-2,
+.food .menuBoisson #star .btn-secondary .text-2,
+.food .menuBoisson #bChaude .btn-secondary .text-2,
+.food .menuBoisson #cocktails .btn-secondary .text-2,
+.food .menuBoisson #milkshakes .btn-secondary .text-2,
+.food .menuBoisson #wines .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: black;
+}
+
+.food .menu #breakfast .btn-secondary,
+.food .menu #burgers .btn-secondary,
+.food .menu #pizza .btn-secondary,
+.food .menu #grillade .btn-secondary,
+.food .menu #patte .btn-secondary,
+.food .menu #tarte .btn-secondary,
+.food .menu #salade .btn-secondary,
+.food .menu #special .btn-secondary,
+.food .menu #glace .btn-secondary,
+.food .menu #cookies .btn-secondary,
+.food .menu #patiserie .btn-secondary,
+.food .menu #pudding .btn-secondary,
+.food .menu #SaladeDeFruit .btn-secondary,
+.food .menu #tartesD .btn-secondary,
+.food .menu #gateau .btn-secondary,
+.food .menu #specialD .btn-secondary,
+.food .menu #star .btn-secondary,
+.food .menu #bChaude .btn-secondary,
+.food .menu #cocktails .btn-secondary,
+.food .menu #milkshakes .btn-secondary,
+.food .menu #wines .btn-secondary,
+.food .menuDeser #breakfast .btn-secondary,
+.food .menuDeser #burgers .btn-secondary,
+.food .menuDeser #pizza .btn-secondary,
+.food .menuDeser #grillade .btn-secondary,
+.food .menuDeser #patte .btn-secondary,
+.food .menuDeser #tarte .btn-secondary,
+.food .menuDeser #salade .btn-secondary,
+.food .menuDeser #special .btn-secondary,
+.food .menuDeser #glace .btn-secondary,
+.food .menuDeser #cookies .btn-secondary,
+.food .menuDeser #patiserie .btn-secondary,
+.food .menuDeser #pudding .btn-secondary,
+.food .menuDeser #SaladeDeFruit .btn-secondary,
+.food .menuDeser #tartesD .btn-secondary,
+.food .menuDeser #gateau .btn-secondary,
+.food .menuDeser #specialD .btn-secondary,
+.food .menuDeser #star .btn-secondary,
+.food .menuDeser #bChaude .btn-secondary,
+.food .menuDeser #cocktails .btn-secondary,
+.food .menuDeser #milkshakes .btn-secondary,
+.food .menuDeser #wines .btn-secondary,
+.food .menuBoisson #breakfast .btn-secondary,
+.food .menuBoisson #burgers .btn-secondary,
+.food .menuBoisson #pizza .btn-secondary,
+.food .menuBoisson #grillade .btn-secondary,
+.food .menuBoisson #patte .btn-secondary,
+.food .menuBoisson #tarte .btn-secondary,
+.food .menuBoisson #salade .btn-secondary,
+.food .menuBoisson #special .btn-secondary,
+.food .menuBoisson #glace .btn-secondary,
+.food .menuBoisson #cookies .btn-secondary,
+.food .menuBoisson #patiserie .btn-secondary,
+.food .menuBoisson #pudding .btn-secondary,
+.food .menuBoisson #SaladeDeFruit .btn-secondary,
+.food .menuBoisson #tartesD .btn-secondary,
+.food .menuBoisson #gateau .btn-secondary,
+.food .menuBoisson #specialD .btn-secondary,
+.food .menuBoisson #star .btn-secondary,
+.food .menuBoisson #bChaude .btn-secondary,
+.food .menuBoisson #cocktails .btn-secondary,
+.food .menuBoisson #milkshakes .btn-secondary,
+.food .menuBoisson #wines .btn-secondary {
+  /* background-color: #b22c54; */
+  background-color: rgba(0, 0, 0, 0);
+  /* color: black; */
+  color: #c3073F;
+}
+
+.food .menu #breakfast .btn-secondary::before,
+.food .menu #burgers .btn-secondary::before,
+.food .menu #pizza .btn-secondary::before,
+.food .menu #grillade .btn-secondary::before,
+.food .menu #patte .btn-secondary::before,
+.food .menu #tarte .btn-secondary::before,
+.food .menu #salade .btn-secondary::before,
+.food .menu #special .btn-secondary::before,
+.food .menu #glace .btn-secondary::before,
+.food .menu #cookies .btn-secondary::before,
+.food .menu #patiserie .btn-secondary::before,
+.food .menu #pudding .btn-secondary::before,
+.food .menu #SaladeDeFruit .btn-secondary::before,
+.food .menu #tartesD .btn-secondary::before,
+.food .menu #gateau .btn-secondary::before,
+.food .menu #specialD .btn-secondary::before,
+.food .menu #star .btn-secondary::before,
+.food .menu #bChaude .btn-secondary::before,
+.food .menu #cocktails .btn-secondary::before,
+.food .menu #milkshakes .btn-secondary::before,
+.food .menu #wines .btn-secondary::before,
+.food .menuDeser #breakfast .btn-secondary::before,
+.food .menuDeser #burgers .btn-secondary::before,
+.food .menuDeser #pizza .btn-secondary::before,
+.food .menuDeser #grillade .btn-secondary::before,
+.food .menuDeser #patte .btn-secondary::before,
+.food .menuDeser #tarte .btn-secondary::before,
+.food .menuDeser #salade .btn-secondary::before,
+.food .menuDeser #special .btn-secondary::before,
+.food .menuDeser #glace .btn-secondary::before,
+.food .menuDeser #cookies .btn-secondary::before,
+.food .menuDeser #patiserie .btn-secondary::before,
+.food .menuDeser #pudding .btn-secondary::before,
+.food .menuDeser #SaladeDeFruit .btn-secondary::before,
+.food .menuDeser #tartesD .btn-secondary::before,
+.food .menuDeser #gateau .btn-secondary::before,
+.food .menuDeser #specialD .btn-secondary::before,
+.food .menuDeser #star .btn-secondary::before,
+.food .menuDeser #bChaude .btn-secondary::before,
+.food .menuDeser #cocktails .btn-secondary::before,
+.food .menuDeser #milkshakes .btn-secondary::before,
+.food .menuDeser #wines .btn-secondary::before,
+.food .menuBoisson #breakfast .btn-secondary::before,
+.food .menuBoisson #burgers .btn-secondary::before,
+.food .menuBoisson #pizza .btn-secondary::before,
+.food .menuBoisson #grillade .btn-secondary::before,
+.food .menuBoisson #patte .btn-secondary::before,
+.food .menuBoisson #tarte .btn-secondary::before,
+.food .menuBoisson #salade .btn-secondary::before,
+.food .menuBoisson #special .btn-secondary::before,
+.food .menuBoisson #glace .btn-secondary::before,
+.food .menuBoisson #cookies .btn-secondary::before,
+.food .menuBoisson #patiserie .btn-secondary::before,
+.food .menuBoisson #pudding .btn-secondary::before,
+.food .menuBoisson #SaladeDeFruit .btn-secondary::before,
+.food .menuBoisson #tartesD .btn-secondary::before,
+.food .menuBoisson #gateau .btn-secondary::before,
+.food .menuBoisson #specialD .btn-secondary::before,
+.food .menuBoisson #star .btn-secondary::before,
+.food .menuBoisson #bChaude .btn-secondary::before,
+.food .menuBoisson #cocktails .btn-secondary::before,
+.food .menuBoisson #milkshakes .btn-secondary::before,
+.food .menuBoisson #wines .btn-secondary::before {
+  /* background-color: black; */
+  background-color: #c3073F;
+}
+
+.food .menu #breakfast .btn-secondary .text-2,
+.food .menu #burgers .btn-secondary .text-2,
+.food .menu #pizza .btn-secondary .text-2,
+.food .menu #grillade .btn-secondary .text-2,
+.food .menu #patte .btn-secondary .text-2,
+.food .menu #tarte .btn-secondary .text-2,
+.food .menu #salade .btn-secondary .text-2,
+.food .menu #special .btn-secondary .text-2,
+.food .menu #glace .btn-secondary .text-2,
+.food .menu #cookies .btn-secondary .text-2,
+.food .menu #patiserie .btn-secondary .text-2,
+.food .menu #pudding .btn-secondary .text-2,
+.food .menu #SaladeDeFruit .btn-secondary .text-2,
+.food .menu #tartesD .btn-secondary .text-2,
+.food .menu #gateau .btn-secondary .text-2,
+.food .menu #specialD .btn-secondary .text-2,
+.food .menu #star .btn-secondary .text-2,
+.food .menu #bChaude .btn-secondary .text-2,
+.food .menu #cocktails .btn-secondary .text-2,
+.food .menu #milkshakes .btn-secondary .text-2,
+.food .menu #wines .btn-secondary .text-2,
+.food .menuDeser #breakfast .btn-secondary .text-2,
+.food .menuDeser #burgers .btn-secondary .text-2,
+.food .menuDeser #pizza .btn-secondary .text-2,
+.food .menuDeser #grillade .btn-secondary .text-2,
+.food .menuDeser #patte .btn-secondary .text-2,
+.food .menuDeser #tarte .btn-secondary .text-2,
+.food .menuDeser #salade .btn-secondary .text-2,
+.food .menuDeser #special .btn-secondary .text-2,
+.food .menuDeser #glace .btn-secondary .text-2,
+.food .menuDeser #cookies .btn-secondary .text-2,
+.food .menuDeser #patiserie .btn-secondary .text-2,
+.food .menuDeser #pudding .btn-secondary .text-2,
+.food .menuDeser #SaladeDeFruit .btn-secondary .text-2,
+.food .menuDeser #tartesD .btn-secondary .text-2,
+.food .menuDeser #gateau .btn-secondary .text-2,
+.food .menuDeser #specialD .btn-secondary .text-2,
+.food .menuDeser #star .btn-secondary .text-2,
+.food .menuDeser #bChaude .btn-secondary .text-2,
+.food .menuDeser #cocktails .btn-secondary .text-2,
+.food .menuDeser #milkshakes .btn-secondary .text-2,
+.food .menuDeser #wines .btn-secondary .text-2,
+.food .menuBoisson #breakfast .btn-secondary .text-2,
+.food .menuBoisson #burgers .btn-secondary .text-2,
+.food .menuBoisson #pizza .btn-secondary .text-2,
+.food .menuBoisson #grillade .btn-secondary .text-2,
+.food .menuBoisson #patte .btn-secondary .text-2,
+.food .menuBoisson #tarte .btn-secondary .text-2,
+.food .menuBoisson #salade .btn-secondary .text-2,
+.food .menuBoisson #special .btn-secondary .text-2,
+.food .menuBoisson #glace .btn-secondary .text-2,
+.food .menuBoisson #cookies .btn-secondary .text-2,
+.food .menuBoisson #patiserie .btn-secondary .text-2,
+.food .menuBoisson #pudding .btn-secondary .text-2,
+.food .menuBoisson #SaladeDeFruit .btn-secondary .text-2,
+.food .menuBoisson #tartesD .btn-secondary .text-2,
+.food .menuBoisson #gateau .btn-secondary .text-2,
+.food .menuBoisson #specialD .btn-secondary .text-2,
+.food .menuBoisson #star .btn-secondary .text-2,
+.food .menuBoisson #bChaude .btn-secondary .text-2,
+.food .menuBoisson #cocktails .btn-secondary .text-2,
+.food .menuBoisson #milkshakes .btn-secondary .text-2,
+.food .menuBoisson #wines .btn-secondary .text-2 {
+  /* color: #b22c54; */
+  color: rgba(0, 0, 0, 0);
+}
+
+.food .menu #breakfast .banner,
+.food .menu #burgers .banner,
+.food .menu #pizza .banner,
+.food .menu #grillade .banner,
+.food .menu #patte .banner,
+.food .menu #tarte .banner,
+.food .menu #salade .banner,
+.food .menu #special .banner,
+.food .menu #glace .banner,
+.food .menu #cookies .banner,
+.food .menu #patiserie .banner,
+.food .menu #pudding .banner,
+.food .menu #SaladeDeFruit .banner,
+.food .menu #tartesD .banner,
+.food .menu #gateau .banner,
+.food .menu #specialD .banner,
+.food .menu #star .banner,
+.food .menu #bChaude .banner,
+.food .menu #cocktails .banner,
+.food .menu #milkshakes .banner,
+.food .menu #wines .banner,
+.food .menuDeser #breakfast .banner,
+.food .menuDeser #burgers .banner,
+.food .menuDeser #pizza .banner,
+.food .menuDeser #grillade .banner,
+.food .menuDeser #patte .banner,
+.food .menuDeser #tarte .banner,
+.food .menuDeser #salade .banner,
+.food .menuDeser #special .banner,
+.food .menuDeser #glace .banner,
+.food .menuDeser #cookies .banner,
+.food .menuDeser #patiserie .banner,
+.food .menuDeser #pudding .banner,
+.food .menuDeser #SaladeDeFruit .banner,
+.food .menuDeser #tartesD .banner,
+.food .menuDeser #gateau .banner,
+.food .menuDeser #specialD .banner,
+.food .menuDeser #star .banner,
+.food .menuDeser #bChaude .banner,
+.food .menuDeser #cocktails .banner,
+.food .menuDeser #milkshakes .banner,
+.food .menuDeser #wines .banner,
+.food .menuBoisson #breakfast .banner,
+.food .menuBoisson #burgers .banner,
+.food .menuBoisson #pizza .banner,
+.food .menuBoisson #grillade .banner,
+.food .menuBoisson #patte .banner,
+.food .menuBoisson #tarte .banner,
+.food .menuBoisson #salade .banner,
+.food .menuBoisson #special .banner,
+.food .menuBoisson #glace .banner,
+.food .menuBoisson #cookies .banner,
+.food .menuBoisson #patiserie .banner,
+.food .menuBoisson #pudding .banner,
+.food .menuBoisson #SaladeDeFruit .banner,
+.food .menuBoisson #tartesD .banner,
+.food .menuBoisson #gateau .banner,
+.food .menuBoisson #specialD .banner,
+.food .menuBoisson #star .banner,
+.food .menuBoisson #bChaude .banner,
+.food .menuBoisson #cocktails .banner,
+.food .menuBoisson #milkshakes .banner,
+.food .menuBoisson #wines .banner {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 60px;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 235px;
+  height: 60px;
+  border: 1px solid #c3073F;
+  text-align: center;
+  color: #fff;
+  background: #c3073F;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15) inset, 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.food .menu #breakfast .banner::before,
+.food .menu #breakfast .banner::after,
+.food .menu #burgers .banner::before,
+.food .menu #burgers .banner::after,
+.food .menu #pizza .banner::before,
+.food .menu #pizza .banner::after,
+.food .menu #grillade .banner::before,
+.food .menu #grillade .banner::after,
+.food .menu #patte .banner::before,
+.food .menu #patte .banner::after,
+.food .menu #tarte .banner::before,
+.food .menu #tarte .banner::after,
+.food .menu #salade .banner::before,
+.food .menu #salade .banner::after,
+.food .menu #special .banner::before,
+.food .menu #special .banner::after,
+.food .menu #glace .banner::before,
+.food .menu #glace .banner::after,
+.food .menu #cookies .banner::before,
+.food .menu #cookies .banner::after,
+.food .menu #patiserie .banner::before,
+.food .menu #patiserie .banner::after,
+.food .menu #pudding .banner::before,
+.food .menu #pudding .banner::after,
+.food .menu #SaladeDeFruit .banner::before,
+.food .menu #SaladeDeFruit .banner::after,
+.food .menu #tartesD .banner::before,
+.food .menu #tartesD .banner::after,
+.food .menu #gateau .banner::before,
+.food .menu #gateau .banner::after,
+.food .menu #specialD .banner::before,
+.food .menu #specialD .banner::after,
+.food .menu #star .banner::before,
+.food .menu #star .banner::after,
+.food .menu #bChaude .banner::before,
+.food .menu #bChaude .banner::after,
+.food .menu #cocktails .banner::before,
+.food .menu #cocktails .banner::after,
+.food .menu #milkshakes .banner::before,
+.food .menu #milkshakes .banner::after,
+.food .menu #wines .banner::before,
+.food .menu #wines .banner::after,
+.food .menuDeser #breakfast .banner::before,
+.food .menuDeser #breakfast .banner::after,
+.food .menuDeser #burgers .banner::before,
+.food .menuDeser #burgers .banner::after,
+.food .menuDeser #pizza .banner::before,
+.food .menuDeser #pizza .banner::after,
+.food .menuDeser #grillade .banner::before,
+.food .menuDeser #grillade .banner::after,
+.food .menuDeser #patte .banner::before,
+.food .menuDeser #patte .banner::after,
+.food .menuDeser #tarte .banner::before,
+.food .menuDeser #tarte .banner::after,
+.food .menuDeser #salade .banner::before,
+.food .menuDeser #salade .banner::after,
+.food .menuDeser #special .banner::before,
+.food .menuDeser #special .banner::after,
+.food .menuDeser #glace .banner::before,
+.food .menuDeser #glace .banner::after,
+.food .menuDeser #cookies .banner::before,
+.food .menuDeser #cookies .banner::after,
+.food .menuDeser #patiserie .banner::before,
+.food .menuDeser #patiserie .banner::after,
+.food .menuDeser #pudding .banner::before,
+.food .menuDeser #pudding .banner::after,
+.food .menuDeser #SaladeDeFruit .banner::before,
+.food .menuDeser #SaladeDeFruit .banner::after,
+.food .menuDeser #tartesD .banner::before,
+.food .menuDeser #tartesD .banner::after,
+.food .menuDeser #gateau .banner::before,
+.food .menuDeser #gateau .banner::after,
+.food .menuDeser #specialD .banner::before,
+.food .menuDeser #specialD .banner::after,
+.food .menuDeser #star .banner::before,
+.food .menuDeser #star .banner::after,
+.food .menuDeser #bChaude .banner::before,
+.food .menuDeser #bChaude .banner::after,
+.food .menuDeser #cocktails .banner::before,
+.food .menuDeser #cocktails .banner::after,
+.food .menuDeser #milkshakes .banner::before,
+.food .menuDeser #milkshakes .banner::after,
+.food .menuDeser #wines .banner::before,
+.food .menuDeser #wines .banner::after,
+.food .menuBoisson #breakfast .banner::before,
+.food .menuBoisson #breakfast .banner::after,
+.food .menuBoisson #burgers .banner::before,
+.food .menuBoisson #burgers .banner::after,
+.food .menuBoisson #pizza .banner::before,
+.food .menuBoisson #pizza .banner::after,
+.food .menuBoisson #grillade .banner::before,
+.food .menuBoisson #grillade .banner::after,
+.food .menuBoisson #patte .banner::before,
+.food .menuBoisson #patte .banner::after,
+.food .menuBoisson #tarte .banner::before,
+.food .menuBoisson #tarte .banner::after,
+.food .menuBoisson #salade .banner::before,
+.food .menuBoisson #salade .banner::after,
+.food .menuBoisson #special .banner::before,
+.food .menuBoisson #special .banner::after,
+.food .menuBoisson #glace .banner::before,
+.food .menuBoisson #glace .banner::after,
+.food .menuBoisson #cookies .banner::before,
+.food .menuBoisson #cookies .banner::after,
+.food .menuBoisson #patiserie .banner::before,
+.food .menuBoisson #patiserie .banner::after,
+.food .menuBoisson #pudding .banner::before,
+.food .menuBoisson #pudding .banner::after,
+.food .menuBoisson #SaladeDeFruit .banner::before,
+.food .menuBoisson #SaladeDeFruit .banner::after,
+.food .menuBoisson #tartesD .banner::before,
+.food .menuBoisson #tartesD .banner::after,
+.food .menuBoisson #gateau .banner::before,
+.food .menuBoisson #gateau .banner::after,
+.food .menuBoisson #specialD .banner::before,
+.food .menuBoisson #specialD .banner::after,
+.food .menuBoisson #star .banner::before,
+.food .menuBoisson #star .banner::after,
+.food .menuBoisson #bChaude .banner::before,
+.food .menuBoisson #bChaude .banner::after,
+.food .menuBoisson #cocktails .banner::before,
+.food .menuBoisson #cocktails .banner::after,
+.food .menuBoisson #milkshakes .banner::before,
+.food .menuBoisson #milkshakes .banner::after,
+.food .menuBoisson #wines .banner::before,
+.food .menuBoisson #wines .banner::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -37px;
+  top: 24px;
+  display: block;
+  width: 60px;
+  height: 0px;
+  border: 30px solid #c3073F;
+  border-right: 20px solid #c3073F;
+  border-bottom-color: #c3073F;
+  border-left-color: transparent;
+  transform: rotate(-5deg);
+}
+
+.food .menu #breakfast .banner::after,
+.food .menu #burgers .banner::after,
+.food .menu #pizza .banner::after,
+.food .menu #grillade .banner::after,
+.food .menu #patte .banner::after,
+.food .menu #tarte .banner::after,
+.food .menu #salade .banner::after,
+.food .menu #special .banner::after,
+.food .menu #glace .banner::after,
+.food .menu #cookies .banner::after,
+.food .menu #patiserie .banner::after,
+.food .menu #pudding .banner::after,
+.food .menu #SaladeDeFruit .banner::after,
+.food .menu #tartesD .banner::after,
+.food .menu #gateau .banner::after,
+.food .menu #specialD .banner::after,
+.food .menu #star .banner::after,
+.food .menu #bChaude .banner::after,
+.food .menu #cocktails .banner::after,
+.food .menu #milkshakes .banner::after,
+.food .menu #wines .banner::after,
+.food .menuDeser #breakfast .banner::after,
+.food .menuDeser #burgers .banner::after,
+.food .menuDeser #pizza .banner::after,
+.food .menuDeser #grillade .banner::after,
+.food .menuDeser #patte .banner::after,
+.food .menuDeser #tarte .banner::after,
+.food .menuDeser #salade .banner::after,
+.food .menuDeser #special .banner::after,
+.food .menuDeser #glace .banner::after,
+.food .menuDeser #cookies .banner::after,
+.food .menuDeser #patiserie .banner::after,
+.food .menuDeser #pudding .banner::after,
+.food .menuDeser #SaladeDeFruit .banner::after,
+.food .menuDeser #tartesD .banner::after,
+.food .menuDeser #gateau .banner::after,
+.food .menuDeser #specialD .banner::after,
+.food .menuDeser #star .banner::after,
+.food .menuDeser #bChaude .banner::after,
+.food .menuDeser #cocktails .banner::after,
+.food .menuDeser #milkshakes .banner::after,
+.food .menuDeser #wines .banner::after,
+.food .menuBoisson #breakfast .banner::after,
+.food .menuBoisson #burgers .banner::after,
+.food .menuBoisson #pizza .banner::after,
+.food .menuBoisson #grillade .banner::after,
+.food .menuBoisson #patte .banner::after,
+.food .menuBoisson #tarte .banner::after,
+.food .menuBoisson #salade .banner::after,
+.food .menuBoisson #special .banner::after,
+.food .menuBoisson #glace .banner::after,
+.food .menuBoisson #cookies .banner::after,
+.food .menuBoisson #patiserie .banner::after,
+.food .menuBoisson #pudding .banner::after,
+.food .menuBoisson #SaladeDeFruit .banner::after,
+.food .menuBoisson #tartesD .banner::after,
+.food .menuBoisson #gateau .banner::after,
+.food .menuBoisson #specialD .banner::after,
+.food .menuBoisson #star .banner::after,
+.food .menuBoisson #bChaude .banner::after,
+.food .menuBoisson #cocktails .banner::after,
+.food .menuBoisson #milkshakes .banner::after,
+.food .menuBoisson #wines .banner::after {
+  left: auto;
+  right: -37px;
+  border-left: 20px solid #c3073F;
+  border-right: 30px solid transparent;
+  transform: rotate(5deg);
+}
+
+.food .menu #breakfast .img,
+.food .menu #burgers .img,
+.food .menu #pizza .img,
+.food .menu #grillade .img,
+.food .menu #patte .img,
+.food .menu #tarte .img,
+.food .menu #salade .img,
+.food .menu #special .img,
+.food .menu #glace .img,
+.food .menu #cookies .img,
+.food .menu #patiserie .img,
+.food .menu #pudding .img,
+.food .menu #SaladeDeFruit .img,
+.food .menu #tartesD .img,
+.food .menu #gateau .img,
+.food .menu #specialD .img,
+.food .menu #star .img,
+.food .menu #bChaude .img,
+.food .menu #cocktails .img,
+.food .menu #milkshakes .img,
+.food .menu #wines .img,
+.food .menuDeser #breakfast .img,
+.food .menuDeser #burgers .img,
+.food .menuDeser #pizza .img,
+.food .menuDeser #grillade .img,
+.food .menuDeser #patte .img,
+.food .menuDeser #tarte .img,
+.food .menuDeser #salade .img,
+.food .menuDeser #special .img,
+.food .menuDeser #glace .img,
+.food .menuDeser #cookies .img,
+.food .menuDeser #patiserie .img,
+.food .menuDeser #pudding .img,
+.food .menuDeser #SaladeDeFruit .img,
+.food .menuDeser #tartesD .img,
+.food .menuDeser #gateau .img,
+.food .menuDeser #specialD .img,
+.food .menuDeser #star .img,
+.food .menuDeser #bChaude .img,
+.food .menuDeser #cocktails .img,
+.food .menuDeser #milkshakes .img,
+.food .menuDeser #wines .img,
+.food .menuBoisson #breakfast .img,
+.food .menuBoisson #burgers .img,
+.food .menuBoisson #pizza .img,
+.food .menuBoisson #grillade .img,
+.food .menuBoisson #patte .img,
+.food .menuBoisson #tarte .img,
+.food .menuBoisson #salade .img,
+.food .menuBoisson #special .img,
+.food .menuBoisson #glace .img,
+.food .menuBoisson #cookies .img,
+.food .menuBoisson #patiserie .img,
+.food .menuBoisson #pudding .img,
+.food .menuBoisson #SaladeDeFruit .img,
+.food .menuBoisson #tartesD .img,
+.food .menuBoisson #gateau .img,
+.food .menuBoisson #specialD .img,
+.food .menuBoisson #star .img,
+.food .menuBoisson #bChaude .img,
+.food .menuBoisson #cocktails .img,
+.food .menuBoisson #milkshakes .img,
+.food .menuBoisson #wines .img {
+  height: 30vh;
+  width: 82%;
+}
+
+.food .menu #breakfast .food-title,
+.food .menu #burgers .food-title,
+.food .menu #pizza .food-title,
+.food .menu #grillade .food-title,
+.food .menu #patte .food-title,
+.food .menu #tarte .food-title,
+.food .menu #salade .food-title,
+.food .menu #special .food-title,
+.food .menu #glace .food-title,
+.food .menu #cookies .food-title,
+.food .menu #patiserie .food-title,
+.food .menu #pudding .food-title,
+.food .menu #SaladeDeFruit .food-title,
+.food .menu #tartesD .food-title,
+.food .menu #gateau .food-title,
+.food .menu #specialD .food-title,
+.food .menu #star .food-title,
+.food .menu #bChaude .food-title,
+.food .menu #cocktails .food-title,
+.food .menu #milkshakes .food-title,
+.food .menu #wines .food-title,
+.food .menuDeser #breakfast .food-title,
+.food .menuDeser #burgers .food-title,
+.food .menuDeser #pizza .food-title,
+.food .menuDeser #grillade .food-title,
+.food .menuDeser #patte .food-title,
+.food .menuDeser #tarte .food-title,
+.food .menuDeser #salade .food-title,
+.food .menuDeser #special .food-title,
+.food .menuDeser #glace .food-title,
+.food .menuDeser #cookies .food-title,
+.food .menuDeser #patiserie .food-title,
+.food .menuDeser #pudding .food-title,
+.food .menuDeser #SaladeDeFruit .food-title,
+.food .menuDeser #tartesD .food-title,
+.food .menuDeser #gateau .food-title,
+.food .menuDeser #specialD .food-title,
+.food .menuDeser #star .food-title,
+.food .menuDeser #bChaude .food-title,
+.food .menuDeser #cocktails .food-title,
+.food .menuDeser #milkshakes .food-title,
+.food .menuDeser #wines .food-title,
+.food .menuBoisson #breakfast .food-title,
+.food .menuBoisson #burgers .food-title,
+.food .menuBoisson #pizza .food-title,
+.food .menuBoisson #grillade .food-title,
+.food .menuBoisson #patte .food-title,
+.food .menuBoisson #tarte .food-title,
+.food .menuBoisson #salade .food-title,
+.food .menuBoisson #special .food-title,
+.food .menuBoisson #glace .food-title,
+.food .menuBoisson #cookies .food-title,
+.food .menuBoisson #patiserie .food-title,
+.food .menuBoisson #pudding .food-title,
+.food .menuBoisson #SaladeDeFruit .food-title,
+.food .menuBoisson #tartesD .food-title,
+.food .menuBoisson #gateau .food-title,
+.food .menuBoisson #specialD .food-title,
+.food .menuBoisson #star .food-title,
+.food .menuBoisson #bChaude .food-title,
+.food .menuBoisson #cocktails .food-title,
+.food .menuBoisson #milkshakes .food-title,
+.food .menuBoisson #wines .food-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.food .menu #breakfast .food-title:before,
+.food .menu #burgers .food-title:before,
+.food .menu #pizza .food-title:before,
+.food .menu #grillade .food-title:before,
+.food .menu #patte .food-title:before,
+.food .menu #tarte .food-title:before,
+.food .menu #salade .food-title:before,
+.food .menu #special .food-title:before,
+.food .menu #glace .food-title:before,
+.food .menu #cookies .food-title:before,
+.food .menu #patiserie .food-title:before,
+.food .menu #pudding .food-title:before,
+.food .menu #SaladeDeFruit .food-title:before,
+.food .menu #tartesD .food-title:before,
+.food .menu #gateau .food-title:before,
+.food .menu #specialD .food-title:before,
+.food .menu #star .food-title:before,
+.food .menu #bChaude .food-title:before,
+.food .menu #cocktails .food-title:before,
+.food .menu #milkshakes .food-title:before,
+.food .menu #wines .food-title:before,
+.food .menuDeser #breakfast .food-title:before,
+.food .menuDeser #burgers .food-title:before,
+.food .menuDeser #pizza .food-title:before,
+.food .menuDeser #grillade .food-title:before,
+.food .menuDeser #patte .food-title:before,
+.food .menuDeser #tarte .food-title:before,
+.food .menuDeser #salade .food-title:before,
+.food .menuDeser #special .food-title:before,
+.food .menuDeser #glace .food-title:before,
+.food .menuDeser #cookies .food-title:before,
+.food .menuDeser #patiserie .food-title:before,
+.food .menuDeser #pudding .food-title:before,
+.food .menuDeser #SaladeDeFruit .food-title:before,
+.food .menuDeser #tartesD .food-title:before,
+.food .menuDeser #gateau .food-title:before,
+.food .menuDeser #specialD .food-title:before,
+.food .menuDeser #star .food-title:before,
+.food .menuDeser #bChaude .food-title:before,
+.food .menuDeser #cocktails .food-title:before,
+.food .menuDeser #milkshakes .food-title:before,
+.food .menuDeser #wines .food-title:before,
+.food .menuBoisson #breakfast .food-title:before,
+.food .menuBoisson #burgers .food-title:before,
+.food .menuBoisson #pizza .food-title:before,
+.food .menuBoisson #grillade .food-title:before,
+.food .menuBoisson #patte .food-title:before,
+.food .menuBoisson #tarte .food-title:before,
+.food .menuBoisson #salade .food-title:before,
+.food .menuBoisson #special .food-title:before,
+.food .menuBoisson #glace .food-title:before,
+.food .menuBoisson #cookies .food-title:before,
+.food .menuBoisson #patiserie .food-title:before,
+.food .menuBoisson #pudding .food-title:before,
+.food .menuBoisson #SaladeDeFruit .food-title:before,
+.food .menuBoisson #tartesD .food-title:before,
+.food .menuBoisson #gateau .food-title:before,
+.food .menuBoisson #specialD .food-title:before,
+.food .menuBoisson #star .food-title:before,
+.food .menuBoisson #bChaude .food-title:before,
+.food .menuBoisson #cocktails .food-title:before,
+.food .menuBoisson #milkshakes .food-title:before,
+.food .menuBoisson #wines .food-title:before {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  border-top: 2px dotted rgba(255, 255, 255, 0.473);
+  display: block;
+  content: "";
+}
+
+.food .menu #breakfast .food-title .food-name,
+.food .menu #burgers .food-title .food-name,
+.food .menu #pizza .food-title .food-name,
+.food .menu #grillade .food-title .food-name,
+.food .menu #patte .food-title .food-name,
+.food .menu #tarte .food-title .food-name,
+.food .menu #salade .food-title .food-name,
+.food .menu #special .food-title .food-name,
+.food .menu #glace .food-title .food-name,
+.food .menu #cookies .food-title .food-name,
+.food .menu #patiserie .food-title .food-name,
+.food .menu #pudding .food-title .food-name,
+.food .menu #SaladeDeFruit .food-title .food-name,
+.food .menu #tartesD .food-title .food-name,
+.food .menu #gateau .food-title .food-name,
+.food .menu #specialD .food-title .food-name,
+.food .menu #star .food-title .food-name,
+.food .menu #bChaude .food-title .food-name,
+.food .menu #cocktails .food-title .food-name,
+.food .menu #milkshakes .food-title .food-name,
+.food .menu #wines .food-title .food-name,
+.food .menuDeser #breakfast .food-title .food-name,
+.food .menuDeser #burgers .food-title .food-name,
+.food .menuDeser #pizza .food-title .food-name,
+.food .menuDeser #grillade .food-title .food-name,
+.food .menuDeser #patte .food-title .food-name,
+.food .menuDeser #tarte .food-title .food-name,
+.food .menuDeser #salade .food-title .food-name,
+.food .menuDeser #special .food-title .food-name,
+.food .menuDeser #glace .food-title .food-name,
+.food .menuDeser #cookies .food-title .food-name,
+.food .menuDeser #patiserie .food-title .food-name,
+.food .menuDeser #pudding .food-title .food-name,
+.food .menuDeser #SaladeDeFruit .food-title .food-name,
+.food .menuDeser #tartesD .food-title .food-name,
+.food .menuDeser #gateau .food-title .food-name,
+.food .menuDeser #specialD .food-title .food-name,
+.food .menuDeser #star .food-title .food-name,
+.food .menuDeser #bChaude .food-title .food-name,
+.food .menuDeser #cocktails .food-title .food-name,
+.food .menuDeser #milkshakes .food-title .food-name,
+.food .menuDeser #wines .food-title .food-name,
+.food .menuBoisson #breakfast .food-title .food-name,
+.food .menuBoisson #burgers .food-title .food-name,
+.food .menuBoisson #pizza .food-title .food-name,
+.food .menuBoisson #grillade .food-title .food-name,
+.food .menuBoisson #patte .food-title .food-name,
+.food .menuBoisson #tarte .food-title .food-name,
+.food .menuBoisson #salade .food-title .food-name,
+.food .menuBoisson #special .food-title .food-name,
+.food .menuBoisson #glace .food-title .food-name,
+.food .menuBoisson #cookies .food-title .food-name,
+.food .menuBoisson #patiserie .food-title .food-name,
+.food .menuBoisson #pudding .food-title .food-name,
+.food .menuBoisson #SaladeDeFruit .food-title .food-name,
+.food .menuBoisson #tartesD .food-title .food-name,
+.food .menuBoisson #gateau .food-title .food-name,
+.food .menuBoisson #specialD .food-title .food-name,
+.food .menuBoisson #star .food-title .food-name,
+.food .menuBoisson #bChaude .food-title .food-name,
+.food .menuBoisson #cocktails .food-title .food-name,
+.food .menuBoisson #milkshakes .food-title .food-name,
+.food .menuBoisson #wines .food-title .food-name {
+  padding-right: 15px;
+  background: rgb(22, 23, 24);
+  position: relative;
+}
+
+.food .menu #breakfast .food-title .food-price,
+.food .menu #burgers .food-title .food-price,
+.food .menu #pizza .food-title .food-price,
+.food .menu #grillade .food-title .food-price,
+.food .menu #patte .food-title .food-price,
+.food .menu #tarte .food-title .food-price,
+.food .menu #salade .food-title .food-price,
+.food .menu #special .food-title .food-price,
+.food .menu #glace .food-title .food-price,
+.food .menu #cookies .food-title .food-price,
+.food .menu #patiserie .food-title .food-price,
+.food .menu #pudding .food-title .food-price,
+.food .menu #SaladeDeFruit .food-title .food-price,
+.food .menu #tartesD .food-title .food-price,
+.food .menu #gateau .food-title .food-price,
+.food .menu #specialD .food-title .food-price,
+.food .menu #star .food-title .food-price,
+.food .menu #bChaude .food-title .food-price,
+.food .menu #cocktails .food-title .food-price,
+.food .menu #milkshakes .food-title .food-price,
+.food .menu #wines .food-title .food-price,
+.food .menuDeser #breakfast .food-title .food-price,
+.food .menuDeser #burgers .food-title .food-price,
+.food .menuDeser #pizza .food-title .food-price,
+.food .menuDeser #grillade .food-title .food-price,
+.food .menuDeser #patte .food-title .food-price,
+.food .menuDeser #tarte .food-title .food-price,
+.food .menuDeser #salade .food-title .food-price,
+.food .menuDeser #special .food-title .food-price,
+.food .menuDeser #glace .food-title .food-price,
+.food .menuDeser #cookies .food-title .food-price,
+.food .menuDeser #patiserie .food-title .food-price,
+.food .menuDeser #pudding .food-title .food-price,
+.food .menuDeser #SaladeDeFruit .food-title .food-price,
+.food .menuDeser #tartesD .food-title .food-price,
+.food .menuDeser #gateau .food-title .food-price,
+.food .menuDeser #specialD .food-title .food-price,
+.food .menuDeser #star .food-title .food-price,
+.food .menuDeser #bChaude .food-title .food-price,
+.food .menuDeser #cocktails .food-title .food-price,
+.food .menuDeser #milkshakes .food-title .food-price,
+.food .menuDeser #wines .food-title .food-price,
+.food .menuBoisson #breakfast .food-title .food-price,
+.food .menuBoisson #burgers .food-title .food-price,
+.food .menuBoisson #pizza .food-title .food-price,
+.food .menuBoisson #grillade .food-title .food-price,
+.food .menuBoisson #patte .food-title .food-price,
+.food .menuBoisson #tarte .food-title .food-price,
+.food .menuBoisson #salade .food-title .food-price,
+.food .menuBoisson #special .food-title .food-price,
+.food .menuBoisson #glace .food-title .food-price,
+.food .menuBoisson #cookies .food-title .food-price,
+.food .menuBoisson #patiserie .food-title .food-price,
+.food .menuBoisson #pudding .food-title .food-price,
+.food .menuBoisson #SaladeDeFruit .food-title .food-price,
+.food .menuBoisson #tartesD .food-title .food-price,
+.food .menuBoisson #gateau .food-title .food-price,
+.food .menuBoisson #specialD .food-title .food-price,
+.food .menuBoisson #star .food-title .food-price,
+.food .menuBoisson #bChaude .food-title .food-price,
+.food .menuBoisson #cocktails .food-title .food-price,
+.food .menuBoisson #milkshakes .food-title .food-price,
+.food .menuBoisson #wines .food-title .food-price {
+  padding-left: 15px;
+  float: right;
+  background: rgb(22, 23, 24);
+}
+
+/* responsive */
+@media (max-width: 320px) {
+  .resp {
+    height: 146vh !important;
+  }
+
+  .resp h5 {
+    font-size: 35px !important;
+    letter-spacing: 0px !important ;
+    margin-left: -10px !important;
+  }
+
+  .carousel-caption {
+    bottom: -272px !important;
+  }
+
+  .header .container .logo img {
+    top: -10px;
+    left: 12px;
+  }
+  .slider .hauteur .carousel-caption .btn-secondary {
+    height: 15vh;
+    width: 33vh;
+  }
+
+  .slider .hauteur .carousel-caption p{
+    font-size: 17px;
+    width: 108% ;
+    margin-left: -10px;
+  }
+}
+
+@media (min-width: 360px) and (max-width:428px) {
+  .resp h5 {
+    font-size: 35px !important;
+    letter-spacing: 3px !important  ;
+  }
+}
+
+@media (max-width:990) {
+  
+}
+
+@media (max-width: 1114px) and (min-width: 1050px){
+  
+}

@@ -1,0 +1,4 @@
+Authname "Espace Admin"
+Authtype Basic
+AuthUserFile "C:\wamp64\www\HOPES\ProjHotel2\admin\.htpasswd"
+Require valid-user 
